@@ -1,2 +1,2 @@
-# homework_bot
+# kitty_bot
 python telegram bot
