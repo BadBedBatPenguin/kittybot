@@ -14,40 +14,31 @@ secret_token = os.getenv('TOKEN')
 
 CAT_URL = 'https://api.thecatapi.com/v1/images/search'
 DOG_URL = 'https://api.thedogapi.com/v1/images/search'
+ERROR_MESSAGE = 'Ошибка при запросе к основному API: '
 
 
-def get_new_cat_image():
+def get_new_pictre(category):
+    categories = {
+        'cat': [CAT_URL, DOG_URL],
+        'dog': [DOG_URL, CAT_URL],
+    }
     try:
-        response = requests.get(CAT_URL)
+        response = requests.get(categories[category][0])
     except Exception as error:
-        logging.error(f'Ошибка при запросе к основному API: {error}')
-        response = requests.get(DOG_URL)
-    
+        logging.error(ERROR_MESSAGE + error)
+        response = requests.get(categories[category][1])
     response = response.json()
-    random_cat = response[0].get('url')
-    return random_cat
-
-
-def get_new_dog_image():
-    try:
-        response = requests.get(DOG_URL)
-    except Exception as error:
-        logging.error(f'Ошибка при запросе к основному API: {error}')
-        response = requests.get(CAT_URL)
-    
-    response = response.json()
-    random_cat = response[0].get('url')
-    return random_cat
+    return response[0].get('url')
 
 
 def new_cat(update, context):
     chat = update.effective_chat
-    context.bot.send_photo(chat.id, get_new_cat_image())
+    context.bot.send_photo(chat.id, get_new_pictre('cat'))
 
 
 def new_dog(update, context):
     chat = update.effective_chat
-    context.bot.send_photo(chat.id, get_new_dog_image())
+    context.bot.send_photo(chat.id, get_new_pictre('dog'))
 
 
 def wake_up(update, context):
@@ -61,7 +52,7 @@ def wake_up(update, context):
         reply_markup=button
     )
 
-    context.bot.send_photo(chat.id, get_new_cat_image())
+    context.bot.send_photo(chat.id, get_new_pictre('cat'))
 
 
 def answer(update, context):
