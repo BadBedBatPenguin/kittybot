@@ -62,10 +62,13 @@ def answer(update, context):
 
 def main():
     updater = Updater(token=secret_token)
-
-    updater.dispatcher.add_handler(CommandHandler('start', wake_up))
-    updater.dispatcher.add_handler(CommandHandler('newcat', new_cat))
-    updater.dispatcher.add_handler(CommandHandler('newdog', new_dog))
+    commands = [
+        ['start', wake_up],
+        ['newcat', new_cat],
+        ['newdog', new_dog],
+    ]
+    for command, func in commands:
+        updater.dispatcher.add_handler(CommandHandler(command, func))
     updater.dispatcher.add_handler(MessageHandler(Filters.text, answer))
 
     updater.start_polling()
