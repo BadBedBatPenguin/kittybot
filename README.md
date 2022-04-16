@@ -4,5 +4,10 @@ Telegram bot that sends random pictures of cats to user. Also it may send a rand
 # How to run
 Run kittybot.py in your IDE or deploy to server. This bot is ready to be deployed to [heroku.com](https://heroku.com). Go to telegram and find KitteykittyBot. Press or send "/start" to start chat with your bot. Enjoy :)
 
+# Requirements
+pytest==6.2.5
+python-dotenv==0.19.0
+python-telegram-bot==13.7
+requests==2.26.0
 
 
