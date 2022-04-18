@@ -2,12 +2,36 @@
 Telegram bot that sends random pictures of cats to user. Also it may send a random piture of dog. There are special buttons in telegram chat to choose what picture aou'd like to get. Main purpose was to get used to telegram python libraries and external APIs. 
 
 ## How to run
-Run kittybot.py in your IDE or deploy to server. This bot is ready to be deployed to [heroku.com](https://heroku.com). Go to telegram and find KitteykittyBot. Press or send "/start" to start chat with your bot. Enjoy :)
+Clone repo and move to its directory:
 
-## Requirements
-pytest==6.2.5
-python-dotenv==0.19.0
-python-telegram-bot==13.7
-requests==2.26.0
+```Shell
+git clone https://github.com/BadBedBatPenguin/yatube.git
+```
 
+```Shell
+cd Yatube
+```
 
+Create and activate virtual environment:
+
+```Shell
+python3 -m venv env
+```
+
+```Shell
+source env/bin/activate
+```
+
+Install packages from requirements.txt:
+
+```Shell
+python3 -m pip install --upgrade pip
+```
+
+```Shell
+pip install -r requirements.txt
+```
+
+Run project: \
+Run kittybot.py in your IDE.
+Go to telegram and find KitteyKittyBot. Press or send "/start" to start chat with your bot. Enjoy :)
