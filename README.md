@@ -33,7 +33,9 @@ pip install -r requirements.txt
 ```
 
 Run project: \
-Run kittybot.py in your IDE. \
+```Shell
+python3 kittybot.py
+```
 Go to telegram and find KitteyKittyBot. \
 Press or send "/start" to start chat with your bot.  \
 Enjoy :)
